@@ -1,0 +1,14 @@
+<ng-container *ngIf="repositories">
+  <a
+    *ngFor="let repo of repositories | async"
+    target="blank"
+    class="links"
+    href="http://www.github.com/{{ userName }}/{{ repo.name }}"
+  >
+    {{ repo.name }}
+    <br />
+  </a>
+  <div *ngIf="!(repositories | async)?.length">
+    No repos To display
+  </div>
+</ng-container>

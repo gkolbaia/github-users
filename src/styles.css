@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: #d3d3d336;
+  margin: 0;
+  font-family: "Helvetica Neue", sans-serif;
+}
+.links {
+  text-decoration: none;
+  color: #955597;
+}
+.links:hover {
+  color: rgba(0, 0, 0, 0.65);
+}
+.user-name {
+  font-size: 24px;
+}
+.card {
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 7px;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}

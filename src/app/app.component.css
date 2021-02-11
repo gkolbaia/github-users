@@ -1,0 +1,10 @@
+.navbar {
+  background-color: #007bff;
+  padding: 24px;
+}
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+

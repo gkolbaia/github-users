@@ -1,0 +1,53 @@
+.list-page {
+  width: 1200px;
+  margin: auto;
+}
+.list-header {
+  margin: 24px 16px 8px 16px;
+  display: flex;
+  justify-content: space-between;
+}
+.list-header h2 {
+  margin: 0;
+}
+.toggler {
+  border-radius: 5px;
+  overflow: hidden;
+}
+.toggler-button {
+  cursor: pointer;
+  border: none;
+}
+.toggler-button:focus {
+  outline: none;
+}
+
+.users-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+  margin: 8px;
+}
+.user-info {
+  margin: 8px 0;
+  width: 100%;
+}
+.user-repos h3 {
+  margin-bottom: 8px;
+}
+.active-view {
+  background-color: #29b24e;
+  color: white;
+}
+@media only screen and (max-width: 1200px) {
+  .list-page {
+    /* background-color: lightblue; */
+    width: 100%;
+  }
+}

@@ -1,0 +1,25 @@
+<div class="user-details-page">
+  <a (click)=goBack() class="back-link-button">
+    <mat-icon>keyboard_backspace</mat-icon>
+    back
+  </a>
+  <div class="card" *ngIf="user">
+    <a href="http://www.github.com/{{user.login}}"  target="blank" class="user-name links">
+      {{user.login}}
+    </a>
+    <hr>
+    <div class="user-information-box">
+      <img [src]="user.avatar_url" class="user-detail-avatar" />
+      <div class="user-information">
+        <p>{{user.name}}</p>
+        <p>type: {{user.type}}</p>
+        <hr>
+        <!-- <a target="blank" class="links" href="http://www.github.com/{{user.login}}/{{repo.name}}" *ngFor="let repo of repositories">
+          {{repo.name}}
+          <br>
+        </a> -->
+        <app-user-repos [userName]=user.login></app-user-repos>
+      </div>
+    </div>
+  </div>
+</div>
