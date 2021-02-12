@@ -1,0 +1,30 @@
+.user-details-page {
+  width: 700px;
+  margin: auto;
+  margin-top: 50px;
+
+  .back-link-button {
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 15px 0;
+
+    button:focus {
+      outline: none;
+    }
+  }
+
+  .user-information-box {
+    display: flex;
+
+    .user-detail-avatar {
+      height: 250px;
+    }
+
+    .user-information {
+      padding: 8px;
+      width: 100%;
+    }
+  }
+}

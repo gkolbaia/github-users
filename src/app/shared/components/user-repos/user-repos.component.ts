@@ -5,7 +5,7 @@ import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-user-repos',
   templateUrl: './user-repos.component.html',
-  styleUrls: ['./user-repos.component.css'],
+  styleUrls: ['./user-repos.component.scss'],
 })
 export class UserReposComponent implements OnInit {
   @Input() userName: string;
@@ -17,8 +17,5 @@ export class UserReposComponent implements OnInit {
   }
   getRepos() {
     this.repositories = this._userService.getUserRepositories(this.userName);
-    this._userService.getUserRepositories(this.userName).subscribe((res) => {
-      console.log('repositori', res);
-    });
   }
 }

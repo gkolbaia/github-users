@@ -1,37 +1,51 @@
 <div class="list-page" *ngIf="users | async">
+  <div class="search">
+    <form class="search-form" (submit)="searchBook()">
+      <input
+        name="searchQuery"
+        [formControl]="searchQuery"
+        class="search-input"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="search-button" type="submit">
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
+  </div>
   <div class="list-header">
     <h2 class="text m-0">GitHub most popular users</h2>
     <div class="toggler">
-      <button
-        (click)="listView()"
-        class="toggler-button"
-        [ngClass]="{ 'active-view': viewToggler }"
-      >
+      <button (click)="listView()" [ngClass]="{ 'active-view': viewToggler }">
         <mat-icon>list</mat-icon>
       </button>
-      <button
-        (click)="gridView()"
-        class="toggler-button"
-        [ngClass]="{ 'active-view': !viewToggler }"
-      >
-        <mat-icon style="vertical-align: center">grid_view</mat-icon>
+      <button (click)="gridView()" [ngClass]="{ 'active-view': !viewToggler }">
+        <mat-icon>grid_view</mat-icon>
       </button>
     </div>
   </div>
   <hr />
-  <div class="users-list">
+  <div
+    class="users-list grid-view"
+    [ngClass]="{
+      'list-view': viewToggler,
+      'grid-wiew': !viewToggler
+    }"
+  >
     <div class="user-card card" *ngFor="let user of users | async">
       <img [src]="user.avatar_url" alt="Book Image" />
       <div class="user-info">
-        <a [routerLink]="[user.login]" class="links user-name">{{
-          user.login
-        }}</a>
-        <hr />
-        <div>{{ user.type }}</div>
-      </div>
-      <div class="user-repos">
-        <h3>User Repos</h3>
-        <app-user-repos [userName]="user.login"></app-user-repos>
+        <div class="user-name">
+          <a [routerLink]="[user.login]" class="links user-name">{{
+            user.login
+          }}</a>
+          <div style="margin-top: 10px">{{ user.type }}</div>
+        </div>
+        <div class="user-repos">
+          <h3>User Repos</h3>
+          <app-user-repos [userName]="user.login"></app-user-repos>
+        </div>
       </div>
     </div>
   </div>

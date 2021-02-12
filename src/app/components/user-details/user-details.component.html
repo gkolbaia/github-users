@@ -14,10 +14,6 @@
         <p>{{user.name}}</p>
         <p>type: {{user.type}}</p>
         <hr>
-        <!-- <a target="blank" class="links" href="http://www.github.com/{{user.login}}/{{repo.name}}" *ngFor="let repo of repositories">
-          {{repo.name}}
-          <br>
-        </a> -->
         <app-user-repos [userName]=user.login></app-user-repos>
       </div>
     </div>

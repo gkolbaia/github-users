@@ -9,14 +9,22 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { UserReposComponent } from './shared/components/user-repos/user-repos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AppComponent, UsersListComponent, UserDetailsComponent, UserReposComponent],
+  declarations: [
+    AppComponent,
+    UsersListComponent,
+    UserDetailsComponent,
+    UserReposComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent],
