@@ -14,7 +14,10 @@
         <p>{{user.name}}</p>
         <p>type: {{user.type}}</p>
         <hr>
+        <p>User Repos:</p>
         <app-user-repos [userName]=user.login></app-user-repos>
+        <h3>User Organisations:</h3>
+        <app-user-organisations [userName]=user.login></app-user-organisations>
       </div>
     </div>
   </div>

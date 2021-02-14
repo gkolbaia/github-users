@@ -1,4 +1,4 @@
-<ng-container *ngIf="repositories">
+<ng-container *ngIf="(repositories | async)?.length">
   <a
     *ngFor="let repo of repositories | async"
     target="blank"
@@ -8,7 +8,5 @@
     {{ repo.name }}
     <br />
   </a>
-  <div *ngIf="!(repositories | async)?.length">
-    No repos To display
-  </div>
 </ng-container>
+<div *ngIf="!(repositories | async)?.length">No repos To display</div>

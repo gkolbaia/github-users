@@ -7,15 +7,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
 import { UserReposComponent } from './shared/components/user-repos/user-repos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserOrganisationsComponent } from './shared/components/user-organisations/user-organisations.component';
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
     UsersListComponent,
     UserDetailsComponent,
     UserReposComponent,
+    UserOrganisationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatAutocompleteModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent],

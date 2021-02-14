@@ -1,18 +1,33 @@
+<div class="sada">sada</div>
 <div class="list-page" *ngIf="users | async">
   <div class="search">
-    <form class="search-form" (submit)="searchBook()">
+    <form class="search-form" (submit)="searchUserSubmit()">
       <input
-        name="searchQuery"
-        [formControl]="searchQuery"
-        class="search-input"
         type="text"
-        placeholder="Search"
-        aria-label="Search"
+        placeholder="Search..."
+        [formControl]="searchQuery"
+        [matAutocomplete]="auto"
+        autocomplete="off"
+        class="search-input"
       />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let user of searchUser | async" [value]="user">
+          <span>{{ user.login }}</span>
+        </mat-option>
+      </mat-autocomplete>
       <button class="search-button" type="submit">
         <mat-icon>search</mat-icon>
       </button>
     </form>
+  </div>
+  <div routerLink class="last-searches" *ngIf="lastSearches">
+    <a
+      class="links"
+      [routerLink]="[user.login]"
+      *ngFor="let user of lastSearches"
+    >
+      {{ user.login }}
+    </a>
   </div>
   <div class="list-header">
     <h2 class="text m-0">GitHub most popular users</h2>
@@ -27,7 +42,7 @@
   </div>
   <hr />
   <div
-    class="users-list grid-view"
+    class="grid-view users-list"
     [ngClass]="{
       'list-view': viewToggler,
       'grid-wiew': !viewToggler
@@ -40,7 +55,7 @@
           <a [routerLink]="[user.login]" class="links user-name">{{
             user.login
           }}</a>
-          <div style="margin-top: 10px">{{ user.type }}</div>
+          <div class="mt-10">{{ user.type }}</div>
         </div>
         <div class="user-repos">
           <h3>User Repos</h3>

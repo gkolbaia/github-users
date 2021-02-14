@@ -1,0 +1,13 @@
+<ng-container *ngIf="(organisations | async)?.length">
+  <a
+    class="organisation-card"
+    *ngFor="let organisation of organisations | async"
+  >
+    <img [src]="organisation.avatar_url" />
+    <a target="blank" href="https://github.com/{{ organisation.login }}">{{
+      organisation.login
+    }}</a>
+  </a>
+  <hr />
+</ng-container>
+<div *ngIf="!(organisations | async)?.length">No Organisations To display</div>

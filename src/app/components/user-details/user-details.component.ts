@@ -17,7 +17,7 @@ export class UserDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getUser() ;
+    this.getUser();
     this.getUserRepositories();
   }
   get userName() {
@@ -25,7 +25,6 @@ export class UserDetailsComponent implements OnInit {
   }
   getUser() {
     this._userService.getUser(this.userName).subscribe((res) => {
-      console.log(res);
       this.user = res;
     });
   }
