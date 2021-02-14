@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsersService } from 'src/app/services/users.service';
+import { Repository } from '../../models/interfaces/Repository.interface';
 
 @Component({
   selector: 'app-user-repos',
@@ -9,7 +10,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UserReposComponent implements OnInit {
   @Input() userName: string;
-  repositories: Observable<any> | null = null;
+  repositories: Observable<Repository[]> | null = null;
   constructor(private _userService: UsersService) {}
 
   ngOnInit(): void {

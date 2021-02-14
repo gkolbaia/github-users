@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { Location } from '@angular/common';
+import { User } from 'src/app/shared/models/interfaces/User.interface';
+import { Repository } from 'src/app/shared/models/interfaces/Repository.interface';
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent implements OnInit {
-  user: any;
-  repositories: any;
+  user: User;
   constructor(
     private _route: ActivatedRoute,
     private _userService: UsersService,
@@ -18,22 +19,16 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.getUserRepositories();
   }
-  get userName() {
+  get userName(): string {
     return this._route.snapshot.params.username;
   }
-  getUser() {
-    this._userService.getUser(this.userName).subscribe((res) => {
+  getUser(): void {
+    this._userService.getUser(this.userName).subscribe((res: User) => {
       this.user = res;
     });
   }
-  getUserRepositories() {
-    this._userService.getUserRepositories(this.userName).subscribe((res) => {
-      this.repositories = res;
-    });
-  }
-  goBack() {
+  goBack(): void {
     this._location.back();
   }
 }

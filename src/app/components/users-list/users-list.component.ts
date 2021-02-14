@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { UsersService } from '../../services/users.service';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/interfaces/User.interface';
 
 @Component({
   selector: 'app-users-list',
@@ -12,12 +13,12 @@ import { Router } from '@angular/router';
 })
 export class UsersListComponent implements OnInit {
   constructor(private _usersService: UsersService, private _router: Router) {}
-  users: Observable<any>;
+  users: Observable<User[]>;
   viewToggler: number = 1;
   searchQuery = new FormControl('');
-  lastSearches: any[];
+  lastSearches: User[];
 
-  searchUser: Observable<any>;
+  searchUser: Observable<User[]>;
 
   ngOnInit(): void {
     this.getLastSerches();
@@ -38,17 +39,17 @@ export class UsersListComponent implements OnInit {
       })
     );
   }
-  listView() {
+  listView(): void {
     this.viewToggler = 1;
   }
-  gridView() {
+  gridView(): void {
     this.viewToggler = 0;
   }
-  searchUserSubmit() {
+  searchUserSubmit(): void {
     if (this.searchQuery.value) {
       this._usersService
         .getUser(this.searchQuery.value)
-        .subscribe((res: any) => {
+        .subscribe((res: User) => {
           this._router.navigate([res.login]);
         });
     }
@@ -56,7 +57,7 @@ export class UsersListComponent implements OnInit {
   displayFn(user): string | undefined {
     return user ? user.login : '';
   }
-  saveLastSearches(term) {
+  saveLastSearches(term): void {
     let lastSearches = JSON.parse(localStorage.getItem('searches'));
     if (!lastSearches) {
       const newSerches = [];
@@ -78,7 +79,7 @@ export class UsersListComponent implements OnInit {
       localStorage.setItem('searches', JSON.stringify(lastSearches));
     }
   }
-  getLastSerches() {
+  getLastSerches(): void {
     this.lastSearches = JSON.parse(localStorage.getItem('searches'));
   }
 }

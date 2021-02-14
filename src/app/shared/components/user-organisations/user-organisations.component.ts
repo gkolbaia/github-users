@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsersService } from 'src/app/services/users.service';
+import { Organisation } from '../../models/interfaces/Organisation.interface';
 
 @Component({
   selector: 'app-user-organisations',
@@ -10,12 +11,9 @@ import { UsersService } from 'src/app/services/users.service';
 export class UserOrganisationsComponent implements OnInit {
   @Input() userName: string;
   constructor(private _usersService: UsersService) {}
-  organisations: Observable<any>;
+  organisations: Observable<Organisation[]>;
   ngOnInit(): void {
     this.getOrganisations();
-    this._usersService.getOrganisations(this.userName).subscribe((res) => {
-      console.log('organisations', res);
-    });
   }
   getOrganisations() {
     this.organisations = this._usersService.getOrganisations(this.userName);
