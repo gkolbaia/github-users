@@ -23,9 +23,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     UserOrganisationsComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
