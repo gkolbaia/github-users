@@ -17,7 +17,7 @@ export class UsersListComponent implements OnInit {
   viewToggler: number = 1;
   searchQuery = new FormControl('');
   lastSearches: User[];
-
+  errorMessage = false;
   searchUser: Observable<User[]>;
 
   ngOnInit(): void {
@@ -47,11 +47,20 @@ export class UsersListComponent implements OnInit {
   }
   searchUserSubmit(): void {
     if (this.searchQuery.value) {
-      this._usersService
-        .getUser(this.searchQuery.value)
-        .subscribe((res: User) => {
+      this._usersService.getUser(this.searchQuery.value).subscribe(
+        (res: User) => {
           this._router.navigate([res.login]);
-        });
+        },
+        (err) => {
+          console.log(err.status);
+          if (err.status === 404) {
+            this.errorMessage = true;
+            setTimeout(() => {
+              this.errorMessage = false;
+            }, 3000);
+          }
+        }
+      );
     }
   }
   displayFn(user): string | undefined {

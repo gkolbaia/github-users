@@ -18,6 +18,7 @@
         <mat-icon>search</mat-icon>
       </button>
     </form>
+    <div *ngIf="errorMessage" class="error-message">User Not Found</div>
   </div>
   <div routerLink class="last-searches" *ngIf="lastSearches">
     <a

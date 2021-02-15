@@ -11,6 +11,7 @@ import { Repository } from 'src/app/shared/models/interfaces/Repository.interfac
 })
 export class UserDetailsComponent implements OnInit {
   user: User;
+  errorMessage = false;
   constructor(
     private _route: ActivatedRoute,
     private _userService: UsersService,
@@ -24,9 +25,16 @@ export class UserDetailsComponent implements OnInit {
     return this._route.snapshot.params.username;
   }
   getUser(): void {
-    this._userService.getUser(this.userName).subscribe((res: User) => {
-      this.user = res;
-    });
+    this._userService.getUser(this.userName).subscribe(
+      (res: User) => {
+        this.user = res;
+      },
+      (err) => {
+        if (err.status === 404) {
+          this.errorMessage = true;
+        }
+      }
+    );
   }
   goBack(): void {
     this._location.back();

@@ -1,24 +1,34 @@
-<div class="user-details-page">
-  <a (click)=goBack() class="back-link-button">
-    <mat-icon>keyboard_backspace</mat-icon>
-    back
-  </a>
-  <div class="card" *ngIf="user">
-    <a href="http://www.github.com/{{user.login}}"  target="blank" class="user-name links">
-      {{user.login}}
+  <div class="user-details-page sada">
+    <a (click)="goBack()" class="back-link-button">
+      <mat-icon>keyboard_backspace</mat-icon>
+      back
     </a>
-    <hr>
-    <div class="user-information-box">
-      <img [src]="user.avatar_url" class="user-detail-avatar" />
-      <div class="user-information">
-        <p>{{user.name}}</p>
-        <p>type: {{user.type}}</p>
-        <hr>
-        <p>User Repos:</p>
-        <app-user-repos [userName]=user.login></app-user-repos>
-        <h3>User Organisations:</h3>
-        <app-user-organisations [userName]=user.login></app-user-organisations>
+    <div class="card" *ngIf="user">
+      <a
+        href="http://www.github.com/{{ user.login }}"
+        target="blank"
+        class="user-name links"
+      >
+        {{ user.login }}
+      </a>
+      <hr />
+      <div class="user-information-box">
+        <img [src]="user.avatar_url" class="user-detail-avatar" />
+        <div class="user-information">
+          <p>{{ user.name }}</p>
+          <p>type: {{ user.type }}</p>
+          <hr />
+          <p>User Repos:</p>
+          <app-user-repos [userName]="user.login"></app-user-repos>
+          <h3>User Organisations:</h3>
+          <app-user-organisations
+            [userName]="user.login"
+          ></app-user-organisations>
+        </div>
       </div>
     </div>
+    <div class="error-field" *ngIf="errorMessage">
+      <p>User with this user name do not exist</p>
+      <img src="../../../assets/not-found.jpg">
+    </div>
   </div>
-</div>
