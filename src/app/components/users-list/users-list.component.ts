@@ -52,7 +52,6 @@ export class UsersListComponent implements OnInit {
           this._router.navigate([res.login]);
         },
         (err) => {
-          console.log(err.status);
           if (err.status === 404) {
             this.errorMessage = true;
             setTimeout(() => {
